@@ -1,0 +1,23 @@
+#include <omp.h>
+#include <iostream>
+
+int main(int argc, char *argv[])
+{
+    int n, sum;
+
+    if(argc < 2) return -1;
+    n = atoi(argv[1]);
+    sum = 0;
+
+    std::cout << "Iniciando! - N: " << n << std::endl << std::endl;
+
+    #pragma omp parallel for collapse(2) reduction(+:sum)
+        for (int i=0; i<n; i++)
+            for (int j=0; j<n ; j++)
+                sum = sum + (i*j);
+
+    std::cout << "Finalizando! - Sum: " << sum << std::endl;
+
+    return 0;
+
+}

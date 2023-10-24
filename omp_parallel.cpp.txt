@@ -1,0 +1,16 @@
+#include <omp.h>
+#include <iostream>
+
+int main()
+{
+    //omp_set_num_threads(5);
+    #pragma omp parallel 
+    {
+        int iTid = omp_get_thread_num();
+        //std::cout << "Sou a thread " << omp_get_thread_num() << std::endl;
+        printf("Sou a thread %i \n", iTid);
+    }
+
+    return 0;
+
+}
